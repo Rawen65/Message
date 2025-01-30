@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #6a1b9a, #8a2be2);
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .hidden {
+            display: none;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        input, select, button {
+            font-size: 1rem;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #6a1b9a;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #4a148c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="intro">
+            <h1>Welcome to My Website</h1>
+            <p>To ensure that you're in fact Shanyar, I will ask you a few questions.</p>
+            <button onclick="startQuiz()">Start</button>
+        </div>
+
+        <div id="question1" class="hidden">
+            <h1>Question 1</h1>
+            <p>What is your birthday?</p>
+            <input type="date" id="birthday" />
+            <button onclick="checkQuestion1()">Submit</button>
+        </div>
+
+        <div id="question2" class="hidden">
+            <h1>Question 2</h1>
+            <p>What am I (Rawen) allergic to?</p>
+            <input type="text" id="allergy" placeholder="Type your answer here" />
+            <button onclick="checkQuestion2()">Submit</button>
+        </div>
+
+        <div id="question3" class="hidden">
+            <h1>Question 3</h1>
+            <p>Who's your favorite doctor?</p>
+            <select id="doctor">
+                <option value="Rawen">Rawen</option>
+                <option value="Aram baram">Aram baram</option>
+            </select>
+            <button onclick="checkQuestion3()">Submit</button>
+        </div>
+
+        <div id="message" class="hidden">
+            <h1>A Special Message</h1>
+            <p>I just wanted to let you know that i wish you good luck on all of your exams and i hope that you get a better grade than all the other students, especially lawand. and i also hope waz3y skt bashbe.</p>
+        </div>
+    </div>
+
+    <script>
+        function startQuiz() {
+            document.getElementById('intro').classList.add('hidden');
+            document.getElementById('question1').classList.remove('hidden');
+        }
+
+        function checkQuestion1() {
+            const birthday = document.getElementById('birthday').value;
+            if (birthday === '2004-11-15') {
+                document.getElementById('question1').classList.add('hidden');
+                document.getElementById('question2').classList.remove('hidden');
+            } else {
+                alert("I'm disappointed that you don't know your own birthday.");
+            }
+        }
+
+        function checkQuestion2() {
+            const allergy = document.getElementById('allergy').value.toLowerCase().replace(/\s+/g, '');
+            const validAnswers = ['favabeans', 'fava beans'];
+            if (validAnswers.includes(allergy)) {
+                document.getElementById('question2').classList.add('hidden');
+                document.getElementById('question3').classList.remove('hidden');
+            } else {
+                alert('How could you not remember? 😢');
+            }
+        }
+
+        function checkQuestion3() {
+            alert("You're lying");
+            document.getElementById('question3').classList.add('hidden');
+            document.getElementById('message').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
